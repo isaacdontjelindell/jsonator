@@ -7,7 +7,8 @@ var data =
             id2: '{{index()}}',
             something: '{{integer(-20, 20)}}',
             guid: '{{guid()}}',
-            bool: '{{bool()}}'
+            bool: '{{bool()}}',
+            lorem: '{{lorem(3, "words")}}'
         }
     ];
 
