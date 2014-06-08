@@ -8,7 +8,9 @@ var data =
             something: '{{integer(-20, 20)}}',
             guid: '{{guid()}}',
             bool: '{{bool()}}',
-            lorem: '{{lorem(3, "words")}}'
+            words: '{{lorem(3, "words")}}',
+            sentence: '{{lorem(1, "sentence")}}',
+            paragraph: '{{lorem(2, "paragraphs")}}'
         }
     ];
 

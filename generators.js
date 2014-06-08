@@ -17,14 +17,21 @@ exports.guid = function () { return ch.guid(); };
 exports.lorem = function (c, type) {
     var ret = '';
     switch (type) {
+        case 'word':
         case 'words':
             for (var i = 0; i < c-1; i++)
-                ret = ret + ch.word() + ' ';
-            ret = ret + ch.word();
+                ret += ch.word() + ' ';
+            ret += ch.word();
             break;
+        case 'sentence':
         case 'sentences':
+            ret = ch.paragraph({sentences: c});
             break;
+        case 'paragraph':
         case 'paragraphs':
+            for (var i = 0; i < c-1; i++)
+                ret += ch.paragraph() + "\n";
+            ret += ch.paragraph();
             break;
     }
     return ret;
