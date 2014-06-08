@@ -1,8 +1,13 @@
+var g = require('./generators.js');
+
 var data =
     [
         {
             id: '{{index()}}',
-            something: '{{integer()}}'
+            id2: '{{index()}}',
+            something: '{{integer(-20, 20)}}',
+            guid: '{{guid()}}',
+            bool: '{{bool()}}'
         }
     ];
 
@@ -41,7 +46,7 @@ function parseArr(l) {
 function parseString(s) {
     if (s.indexOf('{{') != -1) {
         var code = s.substring(2, s.length-2);
-        return eval(code);
+        return eval('g.' + code);
     } else {
         return s;
     }
