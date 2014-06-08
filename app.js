@@ -1,4 +1,6 @@
-var g = require('./generators.js');
+var http = require('http');
+var qs = require('querystring');
+var p = require('./parse');
 
 var data =
     [
@@ -14,47 +16,26 @@ var data =
         }
     ];
 
-function main () {
-    var ret = parseArr(data);
-    console.log(ret);
-}
 
+var server = http.createServer(function (req, res) {
+    if (req.method == 'POST') {
+        var body = '';
+        req.on('data', function (data) {
+            body += data;
 
-function parseArr(l) {
-    var retArr = [];
-    l.forEach(function (arrItem, _) {
-
-        var retItem = {};
-        Object.keys(arrItem).forEach(function (key, _) {
-
-            var val = arrItem[key];
-            // TODO get type of val
-            var type = 'string';
-
-            switch (type) {
-                case 'string':
-                    retItem[key] = parseString(val);
-                    break;
-                case 'list':
-                    retItem[key] = parseArr(val);
-                    break;
-            }
-
+            // Too much POST data, kill it :)
+            if (body.length > 1e6)
+                req.connection.destroy();
         });
-        retArr.push(retItem);
-    });
-    return retArr;
-}
+        req.on('end', function () {
+            var post = qs.parse(body);
+            var schema = JSON.parse(post['schema']);
 
-function parseString(s) {
-    if (s.indexOf('{{') != -1) {
-        var code = s.substring(2, s.length-2);
-        return eval('g.' + code);
-    } else {
-        return s;
+            res.writeHead(200, {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "http://localhost:8000"});
+            res.end(JSON.stringify(p.generate(schema)));
+        })
     }
-}
+});
 
-
-main();
-
+server.listen(8080, 'localhost');
+console.log('Listening...');
