@@ -7,33 +7,43 @@ var data =
     ];
 
 function main () {
-    parseList(data)
+    var ret = parseArr(data);
 }
 
 
-function parseList(l) {
-    l.forEach(function (object, _) {
-        Object.keys(object).forEach(function (key, _) {
-            var obj = object[key];
-            // TODO get type of object
+function parseArr(l) {
+    var retArr = [];
+    l.forEach(function (arrItem, _) {
+
+        Object.keys(arrItem.forEach(function (key, _) {
+            var retItem = {};
+
+            var val = arrItem[key];
+            // TODO get type of val
             var type = 'string';
 
             switch (type) {
                 case 'string':
-                    parseString(obj);
+                    retItem[key] = parseString(obj);
                     break;
                 case 'list':
-                    parseList(obj);
+                    retItem[key] = parseArr(obj);
                     break;
             }
-        })
+
+            retArr.push(retItem);
+        }))
     })
+    return retArr;
 }
 
 function parseString(s) {
     if (s.indexOf('{{') != -1) {
         var code = s.substring(2, s.length-2);
-        console.log(code)
+        console.log(code);
+        return code;
+    } else {
+        return s;
     }
 }
 
