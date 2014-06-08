@@ -8,6 +8,7 @@ var data =
 
 function main () {
     var ret = parseArr(data);
+    console.log(ret);
 }
 
 
@@ -15,8 +16,8 @@ function parseArr(l) {
     var retArr = [];
     l.forEach(function (arrItem, _) {
 
-        Object.keys(arrItem.forEach(function (key, _) {
-            var retItem = {};
+        var retItem = {};
+        Object.keys(arrItem).forEach(function (key, _) {
 
             var val = arrItem[key];
             // TODO get type of val
@@ -24,16 +25,16 @@ function parseArr(l) {
 
             switch (type) {
                 case 'string':
-                    retItem[key] = parseString(obj);
+                    retItem[key] = parseString(val);
                     break;
                 case 'list':
-                    retItem[key] = parseArr(obj);
+                    retItem[key] = parseArr(val);
                     break;
             }
 
-            retArr.push(retItem);
-        }))
-    })
+        });
+        retArr.push(retItem);
+    });
     return retArr;
 }
 
