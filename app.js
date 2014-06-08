@@ -41,8 +41,7 @@ function parseArr(l) {
 function parseString(s) {
     if (s.indexOf('{{') != -1) {
         var code = s.substring(2, s.length-2);
-        console.log(code);
-        return code;
+        return eval(code);
     } else {
         return s;
     }
