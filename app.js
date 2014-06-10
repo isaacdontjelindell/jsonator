@@ -1,6 +1,6 @@
 var http = require('http');
 var qs = require('querystring');
-var p = require('./parse');
+var p = require('./parse/parse');
 
 var data =
     [
