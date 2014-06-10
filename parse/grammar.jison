@@ -3,9 +3,10 @@
 %%
 
 \s+                             /* skip whitespace */
-[a-zA-Z0-9]+\((?:.+)?\)     return 'STR'
 "{{"                            return '{{'
 "}}"                            return '}}'
+[a-zA-Z0-9]+\((?:.+)?\)         return 'FUNC'
+.+                              return 'STR'
 <<EOF>>                         return 'EOF'
 .                               return 'INVALID'
 
@@ -28,5 +29,7 @@ e
     : '{{' e '}}'
         {$$ = $2;}
     | STR
-        {$$ = yytext;}
+        {console.log('str'); $$ = yytext;}
+    | FUNC
+        {console.log('func'); $$ = yytext;}
     ;

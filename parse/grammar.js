@@ -74,9 +74,9 @@
 var grammar = (function(){
 var parser = {trace: function trace() { },
 yy: {},
-symbols_: {"error":2,"expressions":3,"e":4,"EOF":5,"{{":6,"}}":7,"STR":8,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"EOF",6:"{{",7:"}}",8:"STR"},
-productions_: [0,[3,2],[4,3],[4,1]],
+symbols_: {"error":2,"expressions":3,"e":4,"EOF":5,",":6,"{{":7,"}}":8,"STR":9,"FUNC":10,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"EOF",6:",",7:"{{",8:"}}",9:"STR",10:"FUNC"},
+productions_: [0,[3,2],[3,3],[4,3],[4,1],[4,1]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -85,14 +85,16 @@ switch (yystate) {
 case 1: typeof console !== 'undefined' ? console.log($$[$0-1]) : print($$[$0-1]);
           return $$[$0-1]; 
 break;
-case 2:this.$ = $$[$0-1];
+case 3:this.$ = $$[$0-1];
 break;
-case 3:this.$ = yytext;
+case 4:console.log('str'); this.$ = yytext;
+break;
+case 5:console.log('func'); this.$ = yytext;
 break;
 }
 },
-table: [{3:1,4:2,6:[1,3],8:[1,4]},{1:[3]},{5:[1,5]},{4:6,6:[1,3],8:[1,4]},{5:[2,3],7:[2,3]},{1:[2,1]},{7:[1,7]},{5:[2,2],7:[2,2]}],
-defaultActions: {5:[2,1]},
+table: [{3:1,4:2,7:[1,3],9:[1,4],10:[1,5]},{1:[3]},{5:[1,6],6:[1,7]},{4:8,7:[1,3],9:[1,4],10:[1,5]},{5:[2,4],6:[2,4],8:[2,4]},{5:[2,5],6:[2,5],8:[2,5]},{1:[2,1]},{3:9,4:2,7:[1,3],9:[1,4],10:[1,5]},{8:[1,10]},{1:[2,2]},{5:[2,3],6:[2,3],8:[2,3]}],
+defaultActions: {6:[2,1],9:[2,2]},
 parseError: function parseError(str, hash) {
     if (hash.recoverable) {
         this.trace(str);
@@ -560,20 +562,22 @@ var YYSTATE=YY_START;
 switch($avoiding_name_collisions) {
 case 0:/* skip whitespace */
 break;
-case 1:return 8
+case 1:return 7
 break;
-case 2:return 6
+case 2:return 8
 break;
-case 3:return 7
+case 3:return 10
 break;
-case 4:return 5
+case 4:return 9
 break;
-case 5:return 'INVALID'
+case 5:return 5
+break;
+case 6:return 'INVALID'
 break;
 }
 },
-rules: [/^(?:\s+)/,/^(?:[a-zA-Z0-9]+\((?:.+)?\))/,/^(?:\{\{)/,/^(?:\}\})/,/^(?:$)/,/^(?:.)/],
-conditions: {"INITIAL":{"rules":[0,1,2,3,4,5],"inclusive":true}}
+rules: [/^(?:\s+)/,/^(?:\{\{)/,/^(?:\}\})/,/^(?:[a-zA-Z0-9]+\((?:.+)?\))/,/^(?:.+)/,/^(?:$)/,/^(?:.)/],
+conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6],"inclusive":true}}
 };
 return lexer;
 })();
