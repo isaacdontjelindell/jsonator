@@ -24,7 +24,6 @@ expressions
     : e EOF
         { typeof console !== 'undefined' ? console.log($1) : print($1);
           return $1; }
-    | e expressions
     ;
 
 e
