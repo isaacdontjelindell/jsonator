@@ -1,3 +1,4 @@
+
 /* lexical grammar */
 %lex
 %%
@@ -6,7 +7,7 @@
 "{{"                            return '{{'
 "}}"                            return '}}'
 [a-zA-Z0-9]+\((?:.+)?\)         return 'FUNC'
-.+                              return 'STR'
+[^\{\{].+[^\}\}]                return 'STR'
 <<EOF>>                         return 'EOF'
 .                               return 'INVALID'
 
@@ -26,10 +27,9 @@ expressions
     ;
 
 e
-    : '{{' e '}}'
+    : '{{' FUNC '}}'
         {$$ = $2;}
     | STR
-        {console.log('str'); $$ = yytext;}
-    | FUNC
-        {console.log('func'); $$ = yytext;}
+        { console.log('str: ' + $1); $$ = $1;}
     ;
+
