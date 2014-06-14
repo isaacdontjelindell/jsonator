@@ -16,7 +16,8 @@
             bool: '{{bool()}}',
             words: '{{lorem(3, "words")}}',
             sentence: '{{lorem(1, "sentence")}}',
-            paragraph: '{{lorem(2, "paragraphs")}}'
+            paragraph: '{{lorem(2, "paragraphs")}}',
+            firstName: '{{firstName()}} X. {{lastName()}}'
           }
         ];
       $.post('http://localhost:8080', {schema: JSON.stringify(data)}, function (res) {

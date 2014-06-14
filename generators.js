@@ -37,3 +37,5 @@ exports.lorem = function (c, type) {
     return ret;
 };
 
+exports.firstName = function () { return ch.first(); };
+exports.lastName = function () { return ch.last(); };

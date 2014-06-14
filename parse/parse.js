@@ -1,4 +1,4 @@
-var g = require('./generators.js');
+var g = require('../generators.js');
 
 exports.generate = function (schema) {
     return parseArr(schema);
@@ -31,9 +31,52 @@ function parseArr(l) {
 }
 
 function parseString(s) {
+    var values = [];
+
+    var stack = [];
+    var isFunc = false;
+
     if (s.indexOf('{{') != -1) {
-        var code = s.substring(2, s.length-2);
-        return eval('g.' + code);
+        var i = 0;
+        while (i < s.length) {
+            if ((s[i] == '}') && (s[i+1] == '}')) {
+                isFunc = false;
+                var val = "";
+                var top = stack.pop();
+                while (top != '{') {
+                    val = top + val;
+                    top = stack.pop();
+                }
+                stack.pop(); // remove final '{';
+                values.push(val);
+                i +=2 ;
+            }
+
+            if (isFunc) {
+                stack.push(s[i]);
+                i++;
+            } else {
+                stack.push(s[i]);
+                i++;
+            }
+
+            if ((s[i] == '{') && (s[i+1] == '{')) {
+                if (stack.length > 0) {
+                    values.push(stack.join(''));
+                    stack = [];
+                }
+                isFunc = true;
+                stack.push(s[i]);
+                stack.push(s[i+1]);
+                i += 2;
+            }
+        }
+
+        console.log(values);
+
+        //var code = s.substring(2, s.length-2);
+        //return eval('g.' + code);
+        return 'dummy()';
     } else {
         return s;
     }

@@ -3,7 +3,6 @@
     "version": "0.0.1",
     "main": "app.js",
     "dependencies": {
-        "chance" : "*",
-        "jison"  : "*"
+        "chance" : "*"
     }
 }
