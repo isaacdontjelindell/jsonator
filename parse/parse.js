@@ -32,6 +32,7 @@ function parseArr(l) {
 
 function parseString(s) {
     var values = [];
+    var val; // temp variable
 
     var stack = [];
     var isFunc = false;
@@ -41,14 +42,14 @@ function parseString(s) {
         while (i < s.length) {
             if ((s[i] == '}') && (s[i+1] == '}')) {
                 isFunc = false;
-                var val = "";
+                val = '';
                 var top = stack.pop();
                 while (top != '{') {
                     val = top + val;
                     top = stack.pop();
                 }
                 stack.pop(); // remove final '{';
-                values.push(val);
+                values.push(eval('g.'+ val));
                 i +=2 ;
             }
 
@@ -62,7 +63,8 @@ function parseString(s) {
 
             if ((s[i] == '{') && (s[i+1] == '{')) {
                 if (stack.length > 0) {
-                    values.push(stack.join(''));
+                    val = stack.join('');
+                    values.push(val);
                     stack = [];
                 }
                 isFunc = true;
@@ -71,12 +73,7 @@ function parseString(s) {
                 i += 2;
             }
         }
-
-        console.log(values);
-
-        //var code = s.substring(2, s.length-2);
-        //return eval('g.' + code);
-        return 'dummy()';
+        return values.join('');
     } else {
         return s;
     }
