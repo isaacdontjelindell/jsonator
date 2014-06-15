@@ -1,0 +1,32 @@
+
+.viewport {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 60px;
+    bottom: 40px;
+    background-color: lightgrey;
+}
+
+.viewport .column {
+    position: absolute;
+    height: 100%;
+    width: calc(50% - 30px);
+}
+
+.viewport .column.left {
+    left: 20px;
+}
+
+.viewport .column.right {
+    right: 20px;
+}
+
+.CodeMirror {
+    height: 100%;
+}
+
+.CodeMirror-scroll {
+    max-height: none;
+    height: 100%;
+}
