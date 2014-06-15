@@ -1,7 +1,8 @@
 <html>
 <head>
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/4.2.0/codemirror.css">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/4.2.0/theme/solarized.css">
+  <link rel="stylesheet" href="monokai-dark-soda.css">
+  <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.5.0/buttons-min.css">
   <link rel="stylesheet" href="index.css">
 
   <title>JSONator - Dynamically Generated JSON Endpoints</title>
@@ -9,8 +10,10 @@
 
 <body>
   <header role="banner">
-    <button type="button" onclick="send();">Save Template</button>
-    <input type="text" id="endpoint" size="45">
+    <button type="button" id="generate-btn" class="pure-button pure-button-primary" onclick="send();">Create Endpoint</button>
+
+    <div id="endpoint-url"><span></span></div>
+
   </header>
   <div role="main" class="viewport">
     <section class="column left">

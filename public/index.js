@@ -37,7 +37,8 @@ function initCodeMirrors() {
     inputEd = CodeMirror.fromTextArea(document.getElementById("jsonator-input"), {
         mode: "text/javascript",
         lineNumbers: true,
-        theme: "solarized dark",
+        theme: "monokai-dark-soda",
+        lineWrapping: true,
         tabSize: 2
     })
     inputEd.setValue(initialDataString)
@@ -46,7 +47,8 @@ function initCodeMirrors() {
     outputEd = CodeMirror.fromTextArea(document.getElementById("jsonator-output"), {
         mode: "application/json",
         lineNumbers: true,
-        theme: "solarized dark"
+        lineWrapping: true,
+        theme: "monokai-dark-soda"
     });
 }
 
@@ -56,7 +58,8 @@ function send () {
         $.get('http://localhost:8080/' + res.id, null, function (results) {
             var output = JSON.stringify(JSON.parse(results), null, 2)
             outputEd.setValue(output)
-            $('#endpoint').val('http://localhost:8080/' + res.id)
+
+            $('#endpoint-url').find('span').text('http://localhost:8080/' + res.id)
         })
     })
 }
