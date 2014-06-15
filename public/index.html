@@ -10,11 +10,12 @@
 
 <body>
   <header role="banner">
-    <button type="button" id="generate-btn" class="pure-button pure-button-primary" onclick="send();">Create Endpoint</button>
+    <button type="button" id="generate-btn" class="pure-button pure-button-success" onclick="send();">Create Endpoint</button>
 
     <div id="endpoint-url"><span></span></div>
 
   </header>
+
   <div role="main" class="viewport">
     <section class="column left">
       <textarea id="jsonator-input"></textarea>
@@ -22,13 +23,34 @@
     <section class="column right">
       <textarea id="jsonator-output"></textarea>
     </section>
-
   </div>
+
+  <footer role="contentinfo">
+    <div id="footer-links">
+      <span>Built by <a href="http://www.isaacdontjelindell.com">Isaac Dontje Lindell</a></span>
+      <span class="social-button">
+        <a href="https://twitter.com/isaacdownlow"
+           class="twitter-follow-button"
+           data-show-count="false"
+           data-show-screen-name="false"
+           data-dnt="true"
+           data-lang="en">Follow
+        </a>
+      </span>
+      <span class="social-button">
+        <iframe src="http://ghbtns.com/github-btn.html?user=isaacdontjelindell&repo=jsonator&type=fork"
+                allowtransparency="true" frameborder="0" scrolling="0" width="53" height="20"></iframe>
+      </span>
+    </div>
+  </footer>
 
   <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/4.2.0/codemirror.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/4.2.0/mode/javascript/javascript.js"></script>
   <script src="index.js"></script>
+  <script>
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+  </script>
 </body>
 
 </html>
