@@ -37,6 +37,12 @@ footer {
     margin-bottom: -6px;
 }
 
+#logo {
+    position: absolute;
+    top: 5px;
+    left: 30px;
+}
+
 #generate-btn {
     position: absolute;
     right: calc(50% + 46px);

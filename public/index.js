@@ -53,7 +53,7 @@ function initCodeMirrors () {
 }
 
 function hideEndpointUrl () {
-    $('#endpoint-url').hide();
+    $('#endpoint-url').slideUp();
 }
 
 function send () {
