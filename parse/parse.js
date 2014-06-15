@@ -53,13 +53,8 @@ function parseString(s) {
                 i +=2 ;
             }
 
-            if (isFunc) {
                 stack.push(s[i]);
                 i++;
-            } else {
-                stack.push(s[i]);
-                i++;
-            }
 
             if ((s[i] == '{') && (s[i+1] == '{')) {
                 if (stack.length > 0) {
