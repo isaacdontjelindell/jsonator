@@ -1,4 +1,4 @@
-var g = require('../generators.js')
+var g = require('./generators.js')
 
 exports.generate = function (schema) {
     return parseArr(schema)

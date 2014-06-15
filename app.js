@@ -29,7 +29,7 @@ app.get('/:id', function (req, res) {
 
         var schemaObj = JSON.parse(reply)
         var returnVal = p.generate(schemaObj)
-        res.send(JSON.stringify(returnval))
+        res.send(JSON.stringify(returnVal))
     })
 });
 
