@@ -1,4 +1,4 @@
-var inputEd, outputEd;
+var inputEd, outputEd
 var initialDataString = "\
 [\n\
   {\n\
@@ -14,9 +14,9 @@ var initialDataString = "\
     url: 'http://www.google.com'\n\
   }\n\
 ];\n\
-";
+"
 
-$(initCodeMirrors);
+$(initCodeMirrors)
 
 function initCodeMirrors() {
     inputEd = CodeMirror.fromTextArea(document.getElementById("jsonator-input"), {
@@ -24,8 +24,8 @@ function initCodeMirrors() {
         lineNumbers: true,
         theme: "solarized dark",
         tabSize: 2
-    });
-    inputEd.setValue(initialDataString);
+    })
+    inputEd.setValue(initialDataString)
 
 
     outputEd = CodeMirror.fromTextArea(document.getElementById("jsonator-output"), {
@@ -39,9 +39,9 @@ function send () {
     var data = eval(inputEd.getValue());
     $.post('http://localhost:8080', {schema: JSON.stringify(data)}, function (res) {
         $.get('http://localhost:8080/' + res.id, null, function (results) {
-            var output = JSON.stringify(JSON.parse(results), null, 2);
-            outputEd.setValue(output);
-            $('#endpoint').val('http://localhost:8080/' + res.id);
+            var output = JSON.stringify(JSON.parse(results), null, 2)
+            outputEd.setValue(output)
+            $('#endpoint').val('http://localhost:8080/' + res.id)
         })
     })
 }
