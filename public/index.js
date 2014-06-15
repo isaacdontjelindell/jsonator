@@ -11,7 +11,22 @@ var initialDataString = "\
     sentence: '{{lorem(1, \"sentence\")}}',\n\
     paragraph: '{{lorem(2, \"paragraphs\")}}',\n\
     firstName: '{{firstName()}} X. {{lastName()}}',\n\
-    url: 'http://www.google.com'\n\
+    url: 'http://www.google.com',\n\
+    tags: [\n\
+      '{{lorem(1, \"word\")}}',\n\
+      '{{lorem(1, \"word\")}}',\n\
+      '{{lorem(1, \"word\")}}'\n\
+    ],\n\
+    people: [\n\
+      {\n\
+        name: '{{firstName()}}',\n\
+        last: '{{lastName()}}'\n\
+      },\n\
+      {\n\
+        name: '{{firstName()}}',\n\
+        last: '{{lastName()}}'\n\
+      }\n\
+    ]\n\
   }\n\
 ];\n\
 "
