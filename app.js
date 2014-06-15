@@ -1,6 +1,9 @@
-var http = require('http');
-var qs = require('querystring');
 var p = require('./parse/parse');
+
+var redis = require('redis');
+var client = redis.createClient();
+
+var app = require('express').express();
 
 var data =
     [
@@ -17,6 +20,14 @@ var data =
     ];
 
 
+app.post
+
+
+
+
+
+/*var id = 0;
+
 var server = http.createServer(function (req, res) {
     if (req.method == 'POST') {
         var body = '';
@@ -31,11 +42,35 @@ var server = http.createServer(function (req, res) {
             var post = qs.parse(body);
             var schema = JSON.parse(post['schema']);
 
+            client.set(id, post['schema']);
+
             res.writeHead(200, {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "http://localhost:8000"});
-            res.end(JSON.stringify(p.generate(schema)));
+            res.end(JSON.stringify({'id': id}));
+
+            id++;
+            //res.end(JSON.stringify(p.generate(schema)));
         })
     }
-});
 
+    if (req.method == 'GET') {
+
+        var body = '';
+        req.on('end', function () {
+            console.log(req.url);
+            var data = qs.parse(body);
+            console.log(data);
+            client.get(data.id, function (err, reply) {
+                if (err != null) {
+                    console.log(err);
+                }
+                var schemaObj = JSON.parse(reply);
+                res.writeHead(200, {'Content-Type' : 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:8000'});
+                //res.end(JSON.stringify(p.generate(schemaObj)));
+                res.end();
+            });
+        });
+    }
+});*/
+/*
 server.listen(8080, 'localhost');
-console.log('Listening...');
+console.log('Listening...');*/
