@@ -31,8 +31,6 @@ var id = 0;
 
 app.post('/', function (req, res, next) {
     var schema = req.body.schema;
-//    console.log(schema);
-
     client.set(id, schema);
 
     res.send({id: id});
@@ -40,7 +38,6 @@ app.post('/', function (req, res, next) {
 });
 
 app.get('/:id', function (req, res) {
-    console.log(typeof parseInt(req.params.id));
     client.get(parseInt(req.params.id), function (err, reply) {
         if (err != null) { console.log(err);}
         var schemaObj = JSON.parse(reply);

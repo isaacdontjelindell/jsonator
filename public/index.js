@@ -37,7 +37,11 @@ function initCodeMirrors() {
 function send () {
     var data = eval(inputEd.getValue());
     $.post('http://localhost:8080', {schema: JSON.stringify(data)}, function (res) {
-        var output = JSON.stringify(res, null, 2);
-        outputEd.setValue(output);
+        console.log('id: ' + res.id);
+
+        $.get('http://localhost:8080/' + res.id, null, function (results) {
+            var output = JSON.stringify(JSON.parse(results), null, 2);
+            outputEd.setValue(output);
+        })
     })
 }
