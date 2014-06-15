@@ -3,6 +3,8 @@
     "version": "0.0.1",
     "main": "app.js",
     "dependencies": {
-        "chance" : "*"
+        "chance" : "*",
+        "redis"  : ">=0.10.3",
+        "express": "3.x"
     }
 }
