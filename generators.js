@@ -1,51 +1,49 @@
-var ch = require('chance').Chance();
+var ch = require('chance').Chance()
 
 // instance vars
-index = 0;
+index = 0
 
-exports.index = function () { return index++; };
-exports.guid = function () { return ch.guid(); };
-exports.bool = function () { return ch.bool(); };
-exports.floating = function () { /* TODO */ };
+exports.index = function () { return index++ }
+exports.guid = function () { return ch.guid().toLowerCase() }
+exports.bool = function () { return ch.bool() }
+
+/* get a float s <= val <= e  - not inclusive */
+exports.floating = function (s, e) { return ch.floating({min: s, max: e}) }
 
 /* get an integer s <= val <= e  - note inclusive */
-exports.integer = function (s, e) { return ch.integer({min: s, max: e}); };
-
-exports.random = function(options) { /* TODO */ };
-exports.firstName = function () { return ch.first(); };
-exports.lastName = function () { return ch.last(); };
-exports.gender = function () { /* TODO */ };
-exports.company = function () { /* TODO */ };
-exports.email = function () { /* TODO */ };
-exports.phone = function () { /* TODO */ };
-exports.street = function () { /* TODO */ };
-exports.city = function () { /* TODO */ };
-exports.state = function () { /* TODO */ };
-
-// TODO date
-
-exports.floating = function () { /* TODO */ };
+exports.integer = function (s, e) { return ch.integer({min: s, max: e}) }
+exports.random = function(options) { return "NOT YET IMPLEMENTED" }
+exports.firstName = function () { return ch.first() }
+exports.lastName = function () { return ch.last() }
+exports.gender = function () { return ch.gender() }
+exports.company = function () { return ch.capitalize(ch.word({syllables: 3})) }
+exports.email = function () { return ch.email() }
+exports.phone = function () { return ch.phone() }
+exports.street = function () { return ch.street() }
+exports.city = function () { return ch.city() }
+exports.state = function () { return ch.state({full: true}) }
+exports.date = function () { return "NOT YET IMPLEMENTED" }
 
 exports.lorem = function (c, type) {
-    var ret = '';
+    var ret = ''
     switch (type) {
         case 'word':
         case 'words':
             for (var i = 0; i < c-1; i++)
-                ret += ch.word() + ' ';
-            ret += ch.word();
-            break;
+                ret += ch.word() + ' '
+            ret += ch.word()
+            break
         case 'sentence':
         case 'sentences':
-            ret = ch.paragraph({sentences: c});
-            break;
+            ret = ch.paragraph({sentences: c})
+            break
         case 'paragraph':
         case 'paragraphs':
             for (var i = 0; i < c-1; i++)
-                ret += ch.paragraph() + "\n";
-            ret += ch.paragraph();
-            break;
+                ret += ch.paragraph() + "\n"
+            ret += ch.paragraph()
+            break
     }
-    return ret;
+    return ret
 };
 
