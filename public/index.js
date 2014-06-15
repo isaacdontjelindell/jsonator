@@ -1,18 +1,18 @@
 var inputEd, outputEd;
 var initialDataString = "\
 [\n\
-    {\n\
-        id: '{{index()}}',\n\
-        id2: '{{index()}}',\n\
-        something: '{{integer(-20, 20)}}',\n\
-        guid: '{{guid()}}',\n\
-        bool: '{{bool()}}',\n\
-        words: '{{lorem(3, \"words\")}}',\n\
-        sentence: '{{lorem(1, \"sentence\")}}',\n\
-        paragraph: '{{lorem(2, \"paragraphs\")}}',\n\
-        firstName: '{{firstName()}} X. {{lastName()}}',\n\
-        url: 'http://www.google.com'\n\
-    }\n\
+  {\n\
+    id: '{{index()}}',\n\
+    id2: '{{index()}}',\n\
+    something: '{{integer(-20, 20)}}',\n\
+    guid: '{{guid()}}',\n\
+    bool: '{{bool()}}',\n\
+    words: '{{lorem(3, \"words\")}}',\n\
+    sentence: '{{lorem(1, \"sentence\")}}',\n\
+    paragraph: '{{lorem(2, \"paragraphs\")}}',\n\
+    firstName: '{{firstName()}} X. {{lastName()}}',\n\
+    url: 'http://www.google.com'\n\
+  }\n\
 ];\n\
 ";
 
@@ -22,7 +22,8 @@ function initCodeMirrors() {
     inputEd = CodeMirror.fromTextArea(document.getElementById("jsonator-input"), {
         mode: "text/javascript",
         lineNumbers: true,
-        theme: "solarized dark"
+        theme: "solarized dark",
+        tabSize: 2
     });
     inputEd.setValue(initialDataString);
 
