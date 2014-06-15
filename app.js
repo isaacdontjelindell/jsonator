@@ -8,13 +8,12 @@ var express = require('express');
 
 var uuid = require('uuid');
     cors = require('cors');
-
+    bodyParser = require('body-parser');
 
 
 app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded());
-app.use(app.router);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
 
 
 app.post('/', function (req, res, next) {
