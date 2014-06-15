@@ -22,7 +22,7 @@ function initCodeMirrors() {
     inputEd = CodeMirror.fromTextArea(document.getElementById("jsonator-input"), {
         mode: "text/javascript",
         lineNumbers: true,
-        theme: "solarized dark",
+        theme: "solarized dark"
     });
     inputEd.setValue(initialDataString);
 

@@ -5,7 +5,10 @@ var redis = require('redis');
 
 var express = require('express');
     app = express();
+
+var uuid = require('uuid');
     cors = require('cors');
+
 
 
 app.use(cors());
@@ -13,17 +16,16 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(app.router);
 
-var id = 0; // TODO actually use a real id generation mechanism
 
 app.post('/', function (req, res, next) {
     var schema = req.body.schema;
+    var id = uuid.v4();
     client.set(id, schema);
     res.send({id: id});
-    id++
 });
 
 app.get('/:id', function (req, res) {
-    client.get(parseInt(req.params.id), function (err, reply) {
+    client.get(req.params.id, function (err, reply) {
         if (err != null) { console.log(err);}
         var schemaObj = JSON.parse(reply);
 
