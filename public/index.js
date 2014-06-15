@@ -33,7 +33,7 @@ var initialDataString = "\
 
 $(initCodeMirrors)
 
-function initCodeMirrors() {
+function initCodeMirrors () {
     inputEd = CodeMirror.fromTextArea(document.getElementById("jsonator-input"), {
         mode: "text/javascript",
         lineNumbers: true,
@@ -52,6 +52,10 @@ function initCodeMirrors() {
     });
 }
 
+function hideEndpointUrl () {
+    $('#endpoint-url').hide();
+}
+
 function send () {
     var data = eval(inputEd.getValue());
     $.post('http://localhost:8080', {schema: JSON.stringify(data)}, function (res) {
@@ -59,7 +63,8 @@ function send () {
             var output = JSON.stringify(JSON.parse(results), null, 2)
             outputEd.setValue(output)
 
-            $('#endpoint-url').find('span').text('http://localhost:8080/' + res.id)
+            $('#endpoint-url').find('a.url').text('http://localhost:8080/' + res.id).attr('href', 'http://localhost:8080/' + res.id);
+            $('#endpoint-url').slideDown();
         })
     })
 }
