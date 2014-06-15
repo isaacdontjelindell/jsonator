@@ -6,10 +6,12 @@
 </head>
 
 <body>
-
+  <header role="banner">
+    <button type="button" onclick="send();">Save Template</button>
+  </header>
+  <input type="text" id="endpoint">
   <div role="main" class="viewport">
     <section class="column left">
-      <button type="button" onclick="send();">Send</button>
       <textarea id="jsonator-input"></textarea>
     </section>
     <section class="column right">

@@ -1,10 +1,16 @@
+/*header {
+    position: absolute;
+    top: 0px;
+    height: 60px;
+}*/
+
 
 .viewport {
     position: absolute;
     left: 0;
     right: 0;
     top: 60px;
-    bottom: 40px;
+    bottom: 20px;
     background-color: lightgrey;
 }
 
