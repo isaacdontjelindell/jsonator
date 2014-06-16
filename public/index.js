@@ -1,35 +1,38 @@
 var inputEd, outputEd
-var initialDataString = "\
-[\n\
-  {\n\
-    id: '{{index()}}',\n\
-    id2: '{{index()}}',\n\
-    something: '{{integer(-20, 20)}}',\n\
-    guid: '{{guid()}}',\n\
-    bool: '{{bool()}}',\n\
-    words: '{{lorem(3, \"words\")}}',\n\
-    sentence: '{{lorem(1, \"sentence\")}}',\n\
-    paragraph: '{{lorem(2, \"paragraphs\")}}',\n\
-    firstName: '{{firstName()}} X. {{lastName()}}',\n\
-    url: 'http://www.google.com',\n\
-    tags: [\n\
-      '{{lorem(1, \"word\")}}',\n\
-      '{{lorem(1, \"word\")}}',\n\
-      '{{lorem(1, \"word\")}}'\n\
-    ],\n\
-    people: [\n\
-      {\n\
-        name: '{{firstName()}}',\n\
-        last: '{{lastName()}}'\n\
-      },\n\
-      {\n\
-        name: '{{firstName()}}',\n\
-        last: '{{lastName()}}'\n\
-      }\n\
-    ]\n\
-  }\n\
-]\n\
-"
+
+var initialData = [
+    {
+        id: '{{index()}}',
+        guid: '{{guid()}}',
+        bool: '{{bool()}}',
+        floating: '{{floating(-25.2, 25.0)}}',
+        constant: 'http://www.google.com',
+        integer: '{{integer()}}',
+        rangedInteger: '{{integer(2, 10)}}',
+        words: '{{lorem(3, "words")}}',
+        sentence: '{{lorem(1, "sentence")}}',
+        paragraph: '{{lorem(2, "paragraphs")}}',
+        fullName: '{{firstName()}} X. {{lastName()}}',
+        tags: [
+            '{{lorem(1, "word")}}',
+            '{{lorem(1, "word")}}',
+            '{{lorem(1, "word")}}'
+        ],
+        people: [
+            {
+                firstName: '{{firstName()}}',
+                lastName: '{{lastName()}}',
+                age: '{{integer(2, 99)}}'
+            },
+            {
+                firstName: '{{firstName()}}',
+                lastName: '{{lastName()}}',
+                age: '{{integer(2, 99)}}'
+            },
+        ]
+
+    }
+]
 
 $(initCodeMirrors)
 
@@ -41,8 +44,10 @@ function initCodeMirrors () {
         lineWrapping: true,
         tabSize: 2
     })
-    inputEd.setValue(initialDataString)
-
+    //inputEd.setValue(initialDataString)
+    var initialJson = JSON.stringify(initialData, null, 2);
+    initialJson = initialJson.replace(/\"([^(\")"]+)\":/g,"$1:");
+    inputEd.setValue(initialJson);
 
     outputEd = CodeMirror.fromTextArea(document.getElementById("jsonator-output"), {
         mode: "application/json",
