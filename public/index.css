@@ -59,10 +59,10 @@ footer {
 
 #endpoint-url {
     position: absolute;
-    left: 30px;
+    left: 0px;
     top: 0px;
     background-color: rgba(0, 0, 0, 0.7);
-    width: calc(100% - 45px);
+    width: 100%;
     height: 35px;
     z-index: 20;
     border-radius: 2px;
@@ -79,14 +79,13 @@ footer {
     font-size: 13pt;
     color: white;
     position: absolute;
-    bottom: 6px;
-    left: 9px;
-    right: 65px;
+    bottom: 8px;
+    left: 40px;
 }
 
 #endpoint-url span.fa {
     position: absolute;
-    right: 15px;
+    left: 10px;
     top: 7px;
     color: white;
     font-size: 15pt;
