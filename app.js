@@ -9,11 +9,13 @@ var express = require('express')
 var uuid = require('uuid')
     cors = require('cors')
     bodyParser = require('body-parser')
+    path = require('path')
 
 
 app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded())
+app.use(express.static(path.join(__dirname, 'public')))
 
 
 app.post('/api', function (req, res, next) {
