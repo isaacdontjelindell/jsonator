@@ -63,12 +63,12 @@ function hideEndpointUrl () {
 
 function send () {
     var data = eval(inputEd.getValue());
-    $.post('http://localhost/api/', {schema: JSON.stringify(data)}, function (res) {
-        $.get('http://localhost/api/' + res.id, null, function (results) {
+    $.post('http://jsonator.herokuapp.com/api/', {schema: JSON.stringify(data)}, function (res) {
+        $.get('http://jsonator.herokuapp.com/api/' + res.id, null, function (results) {
             var output = JSON.stringify(JSON.parse(results), null, 2)
             outputEd.setValue(output)
 
-            $('#endpoint-url').find('a.url').text('http://localhost/api/' + res.id).attr('href', 'http://localhost/api/' + res.id);
+            $('#endpoint-url').find('a.url').text('http://jsonator.herokuapp.com/api/' + res.id).attr('href', 'http://jsonator.herokuapp.com/api/' + res.id);
             $('#endpoint-url').slideDown();
         })
     })
