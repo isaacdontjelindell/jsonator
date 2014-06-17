@@ -1,7 +1,13 @@
 var p = require('./parse/parse')
 
 var redis = require('redis')
-    client = redis.createClient()
+    if (process.env.REDISTOGO_URL) {
+        var rtg   = require("url").parse(process.env.REDISTOGO_URL);
+        var client = redis.createClient(rtg.port, rtg.hostname);
+        client.auth(rtg.auth.split(":")[1]);
+    } else {
+        var client = redis.createClient();
+    }
 
 var express = require('express')
     app = express()
