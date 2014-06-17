@@ -64,17 +64,17 @@ function hideEndpointUrl () {
 function send () {
     var data = eval(inputEd.getValue());
 
-    var url = "http://localhost/api";
+    var url = "http://localhost/api/";
     if (document.URL.indexOf("herokuapp.com") != -1) {
-        url = "http://jsonator.herokuapp.com/api";
+        url = "http://jsonator.herokuapp.com/api/";
     }
 
-    $.post('http://jsonator.herokuapp.com/api/', {schema: JSON.stringify(data)}, function (res) {
-        $.get('http://jsonator.herokuapp.com/api/' + res.id, null, function (results) {
+    $.post(url, {schema: JSON.stringify(data)}, function (res) {
+        $.get(url + res.id, null, function (results) {
             var output = JSON.stringify(JSON.parse(results), null, 2)
             outputEd.setValue(output)
 
-            $('#endpoint-url').find('a.url').text('http://jsonator.herokuapp.com/api/' + res.id).attr('href', 'http://jsonator.herokuapp.com/api/' + res.id);
+            $('#endpoint-url').find('a.url').text(url + res.id).attr('href', url + res.id);
             $('#endpoint-url').slideDown();
         })
     })
