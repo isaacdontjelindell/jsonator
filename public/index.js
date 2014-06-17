@@ -28,7 +28,7 @@ var initialData = [
                 firstName: '{{firstName()}}',
                 lastName: '{{lastName()}}',
                 age: '{{integer(2, 99)}}'
-            },
+            }
         ]
 
     }
