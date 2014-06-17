@@ -16,14 +16,14 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded())
 
 
-app.post('/', function (req, res, next) {
+app.post('/api', function (req, res, next) {
     var schema = req.body.schema
     var id = uuid.v4()
     client.set(id, schema)
     res.send({id: id})
 });
 
-app.get('/:id', function (req, res) {
+app.get('/api/:id', function (req, res) {
     if (req.params.id.indexOf('favicon.ico') != -1){
         // ignore requests for a favicon
     }

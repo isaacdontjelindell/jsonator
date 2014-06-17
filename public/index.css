@@ -59,10 +59,10 @@ footer {
 
 #endpoint-url {
     position: absolute;
-    left: 35px;
+    left: 30px;
     top: 0px;
     background-color: rgba(0, 0, 0, 0.7);
-    width: calc(100% - 58px);
+    width: calc(100% - 45px);
     height: 35px;
     z-index: 20;
     border-radius: 2px;
@@ -80,7 +80,7 @@ footer {
     color: white;
     position: absolute;
     bottom: 6px;
-    left: 15px;
+    left: 9px;
     right: 65px;
 }
 
