@@ -47,7 +47,7 @@ app.get('/api/:id', function (req, res) {
     }
 });
 
-app.listen(80, function() {
+app.listen(process.env.PORT || 80, function() {
     console.log('listening...')
 })
 
