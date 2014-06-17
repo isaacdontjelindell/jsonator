@@ -63,12 +63,12 @@ function hideEndpointUrl () {
 
 function send () {
     var data = eval(inputEd.getValue());
-    $.post('http://localhost:8080/api/', {schema: JSON.stringify(data)}, function (res) {
-        $.get('http://localhost:8080/api/' + res.id, null, function (results) {
+    $.post('http://localhost/api/', {schema: JSON.stringify(data)}, function (res) {
+        $.get('http://localhost/api/' + res.id, null, function (results) {
             var output = JSON.stringify(JSON.parse(results), null, 2)
             outputEd.setValue(output)
 
-            $('#endpoint-url').find('a.url').text('http://localhost:8080/api/' + res.id).attr('href', 'http://localhost:8080/api/' + res.id);
+            $('#endpoint-url').find('a.url').text('http://localhost/api/' + res.id).attr('href', 'http://localhost/api/' + res.id);
             $('#endpoint-url').slideDown();
         })
     })
