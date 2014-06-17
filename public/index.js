@@ -63,6 +63,12 @@ function hideEndpointUrl () {
 
 function send () {
     var data = eval(inputEd.getValue());
+
+    var url = "http://localhost/api";
+    if (document.URL.indexOf("herokuapp.com") != -1) {
+        url = "http://jsonator.herokuapp.com/api";
+    }
+
     $.post('http://jsonator.herokuapp.com/api/', {schema: JSON.stringify(data)}, function (res) {
         $.get('http://jsonator.herokuapp.com/api/' + res.id, null, function (results) {
             var output = JSON.stringify(JSON.parse(results), null, 2)

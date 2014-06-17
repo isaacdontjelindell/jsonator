@@ -53,6 +53,7 @@ app.get('/api/:id', function (req, res) {
     }
 });
 
+if (!process.env.PORT) process.env.PORT = 80;
 app.listen(process.env.PORT || 80, function() {
     console.log('listening...')
 })
