@@ -34,6 +34,14 @@ var initialData = [
     }
 ]
 
+var url = "http://localhost/api/";
+if (document.URL.indexOf("herokuapp.com") != -1)
+    url = "http://jsonator.herokuapp.com/api/";
+
+var initialJson = JSON.stringify(initialData, null, 2);
+initialJson = initialJson.replace(/\"([^(\")"]+)\":/g,"$1:");
+
+
 $(initCodeMirrors)
 
 function initCodeMirrors () {
@@ -45,8 +53,6 @@ function initCodeMirrors () {
         tabSize: 2
     })
     //inputEd.setValue(initialDataString)
-    var initialJson = JSON.stringify(initialData, null, 2);
-    initialJson = initialJson.replace(/\"([^(\")"]+)\":/g,"$1:");
     inputEd.setValue(initialJson);
 
     outputEd = CodeMirror.fromTextArea(document.getElementById("jsonator-output"), {
@@ -62,20 +68,28 @@ function hideEndpointUrl () {
 }
 
 function send () {
-    var data = eval(inputEd.getValue());
+    var currJson = inputEd.getValue();
 
-    var url = "http://localhost/api/";
-    if (document.URL.indexOf("herokuapp.com") != -1) {
-        url = "http://jsonator.herokuapp.com/api/";
-    }
+    if (currJson !== initialJson) {
+        var data = eval(currJson);
 
-    $.post(url, {schema: JSON.stringify(data)}, function (res) {
-        $.get(url + res.id, null, function (results) {
+        $.post(url, {schema: JSON.stringify(data)}, function (res) {
+            $.get(url + res.id, null, function (results) {
+                var output = JSON.stringify(JSON.parse(results), null, 2)
+                outputEd.setValue(output)
+
+                $('#endpoint-url').find('a.url').text(url + res.id).attr('href', url + res.id)
+                $('#endpoint-url').slideDown()
+            })
+        })
+    } else {
+        var id = '37a64ad8-27b6-44cc-b0f5-2f8500683b2f'
+        $.get(url + id, null, function (results) {
             var output = JSON.stringify(JSON.parse(results), null, 2)
             outputEd.setValue(output)
 
-            $('#endpoint-url').find('a.url').text(url + res.id).attr('href', url + res.id);
-            $('#endpoint-url').slideDown();
+            $('#endpoint-url').find('a.url').text(url + res.id).attr('href', url + res.id)
+            $('#endpoint-url').slideDown()
         })
-    })
+    }
 }
