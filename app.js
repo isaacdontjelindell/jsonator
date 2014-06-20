@@ -32,7 +32,7 @@ app.post('/api', function (req, res, next) {
 });
 
 app.get('/api/:id', function (req, res) {
-    if (req.params.id.indexOf('favicon.ico') != -1){
+    if (req.params.id.indexOf('favicon.ico') != -1) {
         // ignore requests for a favicon
     }
     else {
