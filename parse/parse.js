@@ -71,10 +71,10 @@ function parseString(s) {
                     top = stack.pop()
                 }
                 stack.pop() // remove final '{';
-                var res = self_eval(val)
-                //values.push(res)
-                values.push(eval('g.'+ val))
                 i +=2
+                var res = self_eval(val)
+                values.push(res)
+                //values.push(eval('g.'+ val))
             }
 
                 stack.push(s[i])
@@ -99,25 +99,35 @@ function parseString(s) {
 }
 
 function self_eval (code) {
-    var ret;
 
     var ast = par.parse(code)
 
     var top = ast[1]
 
-    top.forEach(function (stat, _) {
-        var call = stat[1]
+    return parseFunc(top[0][1]);
 
-        var func = call[1]
-        var funcName = func[1]
-
+    function parseFunc(call) {
+        var funcName = call[1][1]
         var args = call[2]
 
-        if (g.map[funcName]) {
-            ret = g.map[funcName].apply(undefined, []);
-            console.log(ret);
-        }
-    })
+        var reducedArgs = [];
+
+        args.forEach(function (arg) {
+            var type = arg[0];
+
+            switch (type) {
+                case "call":
+                    var val = parseFunc(arg)
+                    reducedArgs.push(val)
+                    break;
+                default:
+                    reducedArgs.push(arg[1])
+            }
+        })
+
+        if (g[funcName])
+            return g[funcName].apply(undefined, reducedArgs);
+    }
 }
 
 
