@@ -52,7 +52,6 @@ function initCodeMirrors () {
         lineWrapping: true,
         tabSize: 2
     })
-    //inputEd.setValue(initialDataString)
     inputEd.setValue(initialJson);
 
     outputEd = CodeMirror.fromTextArea(document.getElementById("jsonator-output"), {

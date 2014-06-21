@@ -72,9 +72,8 @@ function parseString(s) {
                 }
                 stack.pop() // remove final '{';
                 i +=2
-                var res = self_eval(val)
+                var res = evalAst(val)
                 values.push(res)
-                //values.push(eval('g.'+ val))
             }
 
                 stack.push(s[i])
@@ -98,7 +97,7 @@ function parseString(s) {
     }
 }
 
-function self_eval (code) {
+function evalAst (code) {
     var ast = par.parse(code)
     var top = ast[1]
 
@@ -126,6 +125,8 @@ function self_eval (code) {
 
         if (g[funcName])
             return g[funcName].apply(undefined, reducedArgs);
+        else
+            return '<Reference Error: Unknown function ' + funcName + '>'
     }
 }
 
