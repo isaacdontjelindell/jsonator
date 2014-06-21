@@ -99,9 +99,7 @@ function parseString(s) {
 }
 
 function self_eval (code) {
-
     var ast = par.parse(code)
-
     var top = ast[1]
 
     return parseFunc(top[0][1]);
@@ -121,6 +119,7 @@ function self_eval (code) {
                     reducedArgs.push(val)
                     break;
                 default:
+                    // TODO handle unary ops (-Num)
                     reducedArgs.push(arg[1])
             }
         })
