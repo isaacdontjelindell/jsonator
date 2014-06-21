@@ -3,6 +3,8 @@ var ch = require('chance').Chance()
 // instance vars
 index = 0
 
+
+
 exports.index = function () { return index++ }
 exports.guid = function () { return ch.guid().toLowerCase() }
 exports.bool = function () { return ch.bool() }
@@ -47,3 +49,8 @@ exports.lorem = function (c, type) {
     return ret
 };
 
+
+exports.map = {
+    index: exports.index,
+    integer: exports.integer
+}

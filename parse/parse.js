@@ -1,5 +1,7 @@
 var g = require('./generators.js')
 
+var par = require('./parse-js.js');
+
 exports.generate = function (schema) {
     return parseArr(schema)
 }
@@ -51,6 +53,7 @@ function parseObj(o) {
 
 function parseString(s) {
     var values = []
+
     var val // temp variable
 
     var stack = []
@@ -68,6 +71,8 @@ function parseString(s) {
                     top = stack.pop()
                 }
                 stack.pop() // remove final '{';
+                var res = self_eval(val)
+                //values.push(res)
                 values.push(eval('g.'+ val))
                 i +=2
             }
@@ -91,6 +96,28 @@ function parseString(s) {
     } else {
         return s
     }
+}
+
+function self_eval (code) {
+    var ret;
+
+    var ast = par.parse(code)
+
+    var top = ast[1]
+
+    top.forEach(function (stat, _) {
+        var call = stat[1]
+
+        var func = call[1]
+        var funcName = func[1]
+
+        var args = call[2]
+
+        if (g.map[funcName]) {
+            ret = g.map[funcName].apply(undefined, []);
+            console.log(ret);
+        }
+    })
 }
 
 
