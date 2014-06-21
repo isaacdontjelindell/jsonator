@@ -69,7 +69,8 @@ function hideEndpointUrl () {
 function send () {
     var currJson = inputEd.getValue();
 
-    if (currJson !== initialJson) {
+//    if (currJson !== initialJson) {
+    if (true) {
         var data = eval(currJson);
 
         $.post(url, {schema: JSON.stringify(data)}, function (res) {

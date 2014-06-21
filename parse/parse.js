@@ -113,12 +113,15 @@ function evalAst (code) {
             var type = arg[0];
 
             switch (type) {
-                case "call":
+                case 'call':
                     var val = parseFunc(arg)
                     reducedArgs.push(val)
                     break;
+                case 'unary-prefix'
+                :   var num = arg[2][1]
+                    reducedArgs.push(-1 * num)
+                    break
                 default:
-                    // TODO handle unary ops (-Num)
                     reducedArgs.push(arg[1])
             }
         })
