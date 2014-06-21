@@ -34,9 +34,9 @@ var initialData = [
     }
 ]
 
-var url = "http://localhost/api/";
+var url = "http://localhost";
 if (document.URL.indexOf("herokuapp.com") != -1)
-    url = "http://jsonator.herokuapp.com/api/";
+    url = "http://jsonator.herokuapp.com";
 
 var initialJson = JSON.stringify(initialData, null, 2);
 initialJson = initialJson.replace(/\"([^(\")"]+)\":/g,"$1:");
@@ -73,8 +73,8 @@ function send () {
     if (true) {
         var data = eval(currJson);
 
-        $.post(url, {schema: JSON.stringify(data)}, function (res) {
-            $.get(url + res.id, null, function (results) {
+        $.post(url + "/set", {schema: JSON.stringify(data)}, function (res) {
+            $.get(url + "/get/" + res.id, null, function (results) {
                 var output = JSON.stringify(JSON.parse(results), null, 2)
                 outputEd.setValue(output)
 
@@ -84,7 +84,7 @@ function send () {
         })
     } else {
         var id = '37a64ad8-27b6-44cc-b0f5-2f8500683b2f'
-        $.get(url + id, null, function (results) {
+        $.get(url + "/get/" + id, null, function (results) {
             var output = JSON.stringify(JSON.parse(results), null, 2)
             outputEd.setValue(output)
 
