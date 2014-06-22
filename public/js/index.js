@@ -62,8 +62,12 @@ function initCodeMirrors () {
     });
 }
 
+function showEndpointUrl () {
+    $('#endpoint-url').slideDown()
+}
+
 function hideEndpointUrl () {
-    $('#endpoint-url').slideUp();
+    $('#endpoint-url').slideUp()
 }
 
 function send () {
@@ -79,7 +83,7 @@ function send () {
                 outputEd.setValue(output)
 
                 $('#endpoint-url').find('a.url').text(url + res.id).attr('href', url + res.id)
-                $('#endpoint-url').slideDown()
+                showEndpointUrl()
             })
         })
     } else {
@@ -89,7 +93,7 @@ function send () {
             outputEd.setValue(output)
 
             $('#endpoint-url').find('a.url').text(url + id).attr('href', url + id)
-            $('#endpoint-url').slideDown()
+            showEndpointUrl()
         })
     }
 }
