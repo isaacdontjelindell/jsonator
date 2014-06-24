@@ -2,32 +2,32 @@ var inputEd, outputEd
 
 var initialData = [
     {
-        id: '{{index()}}',
-        guid: '{{guid()}}',
-        bool: '{{bool()}}',
-        floating: '{{floating(-25.2, 25.0)}}',
-        constant: 'http://www.google.com',
-        integer: '{{integer()}}',
-        rangedInteger: '{{integer(2, 10)}}',
-        words: '{{lorem(3, "words")}}',
-        sentence: '{{lorem(1, "sentence")}}',
-        paragraph: '{{lorem(2, "paragraphs")}}',
-        fullName: '{{firstName()}} X. {{lastName()}}',
+        id: "{{index()}}",
+        guid: "{{guid()}}",
+        bool: "{{bool()}}",
+        floating: "{{floating(-25.2, 25.0)}}",
+        constant: "http://www.google.com",
+        integer: "{{integer()}}",
+        rangedInteger: "{{integer(2, 10)}}",
+        words: "{{lorem(3, 'words')}}",
+        sentence: "{{lorem(1, 'sentence')}}",
+        paragraph: "{{lorem(2, 'paragraphs')}}",
+        fullName: "{{firstName()}} X. {{lastName()}}",
         tags: [
-            '{{lorem(1, "word")}}',
-            '{{lorem(1, "word")}}',
-            '{{lorem(1, "word")}}'
+            "{{lorem(1, 'word')}}",
+            "{{lorem(1, 'word')}}",
+            "{{lorem(1, 'word')}}"
         ],
         people: [
             {
-                firstName: '{{firstName()}}',
-                lastName: '{{lastName()}}',
-                age: '{{integer(2, 99)}}'
+                firstName: "{{firstName()}}",
+                lastName: "{{lastName()}}",
+                age: "{{integer(2, 99)}}"
             },
             {
-                firstName: '{{firstName()}}',
-                lastName: '{{lastName()}}',
-                age: '{{integer(2, 99)}}'
+                firstName: "{{firstName()}}",
+                lastName: "{{lastName()}}",
+                age: "{{integer(2, 99)}}"
             }
         ]
 
