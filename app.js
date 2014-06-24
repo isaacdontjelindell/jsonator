@@ -12,8 +12,7 @@ var redis = require('redis')
 var express = require('express')
     app = express()
 
-var uuid = require('uuid')
-    cors = require('cors')
+var cors = require('cors')
     bodyParser = require('body-parser')
     path = require('path')
 
@@ -26,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.post('/set', function (req, res, next) {
     var schema = req.body.schema
-    var id = uuid.v4()
+    var id = (Math.random() + 1).toString(36).slice(2)
     client.set(id, schema)
     res.send({id: id})
 });
