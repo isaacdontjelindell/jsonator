@@ -23,6 +23,7 @@
       <div id="endpoint-url" style="display: none;">
         <a class="url"></a>
         <button type="button" class="pure-button copy-clipboard">Copy URL To Clipboard</button>
+        <span class="copy-status-text" style="display: none">Copied!</span>
         <span class="hide fa fa-eye-slash" onclick="hideEndpointUrl()" title="Hide URL"></span>
       </div>
       <span class="show fa fa-eye" onclick="showEndpointUrl()" title="Show URL" style="display: none"></span>
@@ -52,6 +53,7 @@
   <script src="js/jquery-2.1.1.min.js"></script>
   <script src="js/codemirror.js"></script>
   <script src="js/javascript.js"></script>
+  <script src="js/ZeroClipboard.min.js"></script>
   <script src="js/index.js"></script>
   <script>
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");

@@ -39,10 +39,11 @@ if (document.URL.indexOf("herokuapp.com") != -1)
     url = "http://jsonator.herokuapp.com";
 
 var initialJson = JSON.stringify(initialData, null, 2);
-initialJson = initialJson.replace(/\"([^(\")"]+)\":/g,"$1:");
+initialJson = initialJson.replace(/\"([^(\")"]+)\":/g,"$1:"); // remove quotes from keys - looks nicer
 
 
 $(initCodeMirrors)
+$(initZeroClipboard)
 
 function initCodeMirrors () {
     inputEd = CodeMirror.fromTextArea(document.getElementById("jsonator-input"), {
@@ -62,6 +63,19 @@ function initCodeMirrors () {
     });
 }
 
+function initZeroClipboard() {
+    var client = new ZeroClipboard($(".copy-clipboard"))
+    client.on('ready', function (event) {
+        client.on('copy', function (event) {
+            event.clipboardData.setData('text/plain', $('.url').attr('href'))
+        })
+
+        client.on('aftercopy', function (event) {
+            $(".copy-status-text").css('display', 'inline-block')
+        })
+    })
+}
+
 function showEndpointUrl () {
     $('#endpoint-url').slideDown()
 }
@@ -72,9 +86,10 @@ function hideEndpointUrl () {
 }
 
 function send () {
-    var currJson = inputEd.getValue();
+    $('.copy-status-text').css('display', 'none');
 
-//    if (currJson !== initialJson) {
+    var currJson = inputEd.getValue();
+    //if (currJson !== initialJson) {
     if (true) {
         var data = eval(currJson);
 

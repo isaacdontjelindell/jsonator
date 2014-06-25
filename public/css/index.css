@@ -90,6 +90,13 @@ footer {
     top: 45px;
 }
 
+#endpoint-url span.copy-status-text {
+    position: absolute;
+    left: 248px;
+    top: 55px;
+    color: white;
+}
+
 .viewport {
     position: absolute;
     left: 0;
