@@ -46,7 +46,7 @@ footer {
 #generate-btn {
     position: absolute;
     left: calc(50% - 73px);
-    bottom: 10px;
+    bottom: 15px;
     margin: 0px;
     font-size: 14pt;
     padding-top: 5px;

@@ -1,5 +1,4 @@
 var g = require('./generators.js')
-
 var par = require('./parse-js.js');
 
 exports.generate = function (schema) {
@@ -117,8 +116,8 @@ function evalAst (code) {
                     var val = parseFunc(arg)
                     reducedArgs.push(val)
                     break;
-                case 'unary-prefix'
-                :   var num = arg[2][1]
+                case 'unary-prefix':
+                    var num = arg[2][1]
                     reducedArgs.push(-1 * num)
                     break
                 default:
@@ -127,7 +126,7 @@ function evalAst (code) {
         })
 
         if (g[funcName])
-            return g[funcName].apply(undefined, reducedArgs);
+            return g[funcName].apply(undefined, reducedArgs)
         else
             return '<Reference Error: Unknown function ' + funcName + '>'
     }
