@@ -67,6 +67,7 @@ function showEndpointUrl () {
 }
 
 function hideEndpointUrl () {
+    $('.column.right .show').css('display', '')
     $('#endpoint-url').slideUp()
 }
 
