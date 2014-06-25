@@ -58,10 +58,10 @@ footer {
 
 #endpoint-url {
     position: absolute;
-    left: 0px;
+    left: 30px;
     top: 0px;
     background-color: rgba(0, 0, 0, 0.8);
-    width: calc(100% - 15px);
+    width: calc(100% - 48px);
     height: 100px;
     z-index: 20;
     border-radius: 2px;
@@ -118,7 +118,7 @@ footer {
 .viewport .column.right .show {
     position: absolute;
     top: 7px;
-    right: 26px;
+    right: 29px;
     color: white;
     font-size: 15pt;
     z-index: 19;

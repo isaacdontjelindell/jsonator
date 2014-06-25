@@ -83,7 +83,7 @@ function send () {
                 var output = JSON.stringify(JSON.parse(results), null, 2)
                 outputEd.setValue(output)
 
-                $('#endpoint-url').find('a.url').text(url + "/get/" + res.id).attr('href', url + "/get/" + id)
+                $('#endpoint-url').find('a.url').text(url + "/get/" + res.id).attr('href', url + "/get/" + res.id)
                 showEndpointUrl()
             })
         })
