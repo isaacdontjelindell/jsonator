@@ -75,8 +75,8 @@ function parseString(s) {
                 values.push(res)
             }
 
-                stack.push(s[i])
-                i++
+            stack.push(s[i])
+            i++
 
             if ((s[i] == '{') && (s[i+1] == '{')) {
                 if (stack.length > 0) {
