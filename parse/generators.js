@@ -12,7 +12,9 @@ exports.floating = function (s, e) { return ch.floating({min: s, max: e}) }
 
 /* get an integer s <= val <= e  - note inclusive */
 exports.integer = function (s, e) { return ch.integer({min: s, max: e}) }
-exports.random = function(options) { return "NOT YET IMPLEMENTED" }
+exports.random = function(options) {
+    return ch.pick(options)
+}
 exports.firstName = function () { return ch.first() }
 exports.lastName = function () { return ch.last() }
 exports.gender = function () { return ch.gender() }

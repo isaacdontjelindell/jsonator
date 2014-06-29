@@ -118,7 +118,14 @@ function evalAst (code) {
                     break;
                 case 'unary-prefix':
                     var num = arg[2][1]
-                    reducedArgs.push(-1 * num)
+                    reducedArgs.push(-1 * num) // assume it's a minus (TODO bad assumption)
+                    break
+                case 'array':
+                    var ret = []
+                    arg[1].forEach(function (el) {
+                        ret.push(el[1])
+                    })
+                    reducedArgs.push(ret);
                     break
                 default:
                     reducedArgs.push(arg[1])
