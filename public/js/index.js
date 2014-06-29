@@ -41,6 +41,8 @@ if (document.URL.indexOf("herokuapp.com") != -1)
 var initialJson = JSON.stringify(initialData, null, 2);
 initialJson = initialJson.replace(/\"([^(\")"]+)\":/g,"$1:"); // remove quotes from keys - looks nicer
 
+var endpointCreated = false
+
 
 $(initCodeMirrors)
 $(initZeroClipboard)
@@ -89,27 +91,40 @@ function send () {
     $('.copy-status-text').css('display', 'none');
 
     var currJson = inputEd.getValue();
-    //if (currJson !== initialJson) {
-    if (true) {
-        var data = eval(currJson);
+    if (currJson !== initialJson)
+        endpointCreated = false
 
-        $.post(url + "/set", {schema: JSON.stringify(data)}, function (res) {
-            $.get(url + "/get/" + res.id, null, function (results) {
-                var output = JSON.stringify(JSON.parse(results), null, 2)
-                outputEd.setValue(output)
+    if (endpointCreated) {
+        var id = $('body').data('endpoint-id')
+        getData(id)
+    }
+    else {
+        createEndpoint(currJson)
+    }
+}
 
-                $('#endpoint-url').find('a.url').text(url + "/get/" + res.id).attr('href', url + "/get/" + res.id)
-                showEndpointUrl()
-            })
-        })
-    } else {
-        var id = '37a64ad8-27b6-44cc-b0f5-2f8500683b2f'
-        $.get(url + "/get/" + id, null, function (results) {
+function createEndpoint (json) {
+    var data = eval(json)
+    $.post(url + "/set", {schema: JSON.stringify(data)}, function (res) {
+        $.get(url + "/get/" + res.id, null, function (results) {
             var output = JSON.stringify(JSON.parse(results), null, 2)
             outputEd.setValue(output)
 
-            $('#endpoint-url').find('a.url').text(url + "/get/" + id).attr('href', url + "/get/" + id)
+            $('body').data('endpoint-id', res.id)
+            endpointCreated = true
+            initialJson = json
+
+            $('#endpoint-url').find('a.url').text(url + '/get/' + res.id).attr('href', url + "/get/" + res.id)
             showEndpointUrl()
         })
-    }
+    })
+}
+
+function getData (id) {
+    $.get(url + '/get/' + id, null, function (results) {
+        var output = JSON.stringify(JSON.parse(results), null, 2)
+        outputEd.setValue(output)
+
+        $('#endpoint-url').find('a.url').text(url + "/get/" + id).attr('href', url + "/get/" + id)
+    })
 }
