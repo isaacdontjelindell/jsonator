@@ -8,7 +8,7 @@ Web service for creating random JSON data. Try it at [jsonator.herokuapp.com](js
 
 The intent is to provide a service that allows developers to quickly mock up a JSON data source.
 
-The developer can create a "schema" that describes the structure of the desired endpoint, and JSON will provide an
+The developer can create a "schema" that describes the structure of the desired endpoint, and JSONator will provide an
 endpoint that, when requested by an HTTP GET request, returns random data in the desired structure.
 
 For example, if the schema looks like this:
