@@ -46,6 +46,16 @@ The complete list of substitution functions can be found below.
 * `bool()` -- returns a boolean value
 * `integer([min, max])` -- returns a random integer. If min and max are specified, the integer will be between min and max (inclusive). If min and max are not specified, the integer will be bounded by Javascript's integer size.
 * `floating([min, max])` -- returns a random floating-point number. If min and max are specified, the number will be between min and max (inclusive). If min and max are not specified, the integer will be bounded by Javascript's floating point size.
+* `pick(fromArray)` -- returns a random element from the given array. Example: `pick(['red', 'green', 'blue'])`
+* `firstName()` -- returns a first name
+* `lastName()` -- returns a last name
+* `gender()` -- returns a gender
+* `email()` -- returns an email address
+* `phone()` -- returns a phone number in the form (555) 555-5555
+* `address()` -- returns an address in the form "123 Example Street"
+* `streen()` -- returns a street name
+* `city()` -- returns a city name
+* `state()` -- returns a U.S. state name
 * `lorem(num, type)` -- returns random text. `num` must be an integer specifying how many units of the given type should be generated. `type` must be one of ["words", "sentences", or "paragraphs"] \("word", "sentence", and "paragraph" are also legal). Example: `lorem(3, "sentences")` will return 3 sentences.
 
 
