@@ -34,9 +34,11 @@ var initialData = [
     }
 ]
 
-var url = "http://localhost";
+var url = "http://localhost"
 if (document.URL.indexOf("herokuapp.com") != -1)
-    url = "http://jsonator.herokuapp.com";
+    url = "http://jsonator.herokuapp.com"
+if (document.URL.indexOf("dev.isaacdontjelindell.com:8080") != -1)
+    url = "http://dev.isaacdontjelindell.com:8080"
 
 var initialJson = JSON.stringify(initialData, null, 2);
 initialJson = initialJson.replace(/\"([^(\")"]+)\":/g,"$1:"); // remove quotes from keys - looks nicer
@@ -105,6 +107,7 @@ function send () {
 
 function createEndpoint (json) {
     var data = eval(json)
+
     $.post(url + "/set", {schema: JSON.stringify(data)}, function (res) {
         $.get(url + "/get/" + res.id, null, function (results) {
             var output = JSON.stringify(JSON.parse(results), null, 2)

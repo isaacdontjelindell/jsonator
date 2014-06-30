@@ -97,46 +97,61 @@ function parseString(s) {
 }
 
 function evalAst (code) {
-    var ast = par.parse(code)
+    try {
+        var ast = par.parse(code)
+    }
+    catch (err) {
+        console.log(err)
+        return '<Syntax Error: ' + err.message + '>'
+    }
     var top = ast[1]
 
     return parseFunc(top[0][1]);
-
-    function parseFunc(call) {
-        var funcName = call[1][1]
-        var args = call[2]
-
-        var reducedArgs = [];
-
-        args.forEach(function (arg) {
-            var type = arg[0];
-
-            switch (type) {
-                case 'call':
-                    var val = parseFunc(arg)
-                    reducedArgs.push(val)
-                    break;
-                case 'unary-prefix':
-                    var num = arg[2][1]
-                    reducedArgs.push(-1 * num) // assume it's a minus (TODO bad assumption)
-                    break
-                case 'array':
-                    var ret = []
-                    arg[1].forEach(function (el) {
-                        ret.push(el[1])
-                    })
-                    reducedArgs.push(ret);
-                    break
-                default:
-                    reducedArgs.push(arg[1])
-            }
-        })
-
-        if (g[funcName])
-            return g[funcName].apply(undefined, reducedArgs)
-        else
-            return '<Reference Error: Unknown function ' + funcName + '>'
-    }
 }
 
+function parseFunc(call) {
+    var funcName = call[1][1]
+    var args = call[2]
+
+    var reducedArgs = [];
+
+    args.forEach(function (arg) {
+        var type = arg[0];
+
+        switch (type) {
+            case 'call':
+                var val = parseFunc(arg)
+                reducedArgs.push(val)
+                break;
+            case 'unary-prefix':
+                var num = arg[2][1]
+                reducedArgs.push(-1 * num) // assume it's a minus (TODO bad assumption)
+                break
+            case 'array':
+                var ret = []
+                arg[1].forEach(function (el) {
+                    ret.push(el[1])
+                })
+                reducedArgs.push(ret);
+                break
+            default:
+                reducedArgs.push(arg[1])
+        }
+    })
+
+    if (g[funcName]) {
+        var res
+        try {
+            res = g[funcName].apply(undefined, reducedArgs)
+        }
+        catch (err) {
+            res = '<Error: ' + err.message + '>'
+        }
+        return res
+
+    }
+    else {
+        return '<Reference Error: Unknown function ' + funcName + '>'
+    }
+}
 
