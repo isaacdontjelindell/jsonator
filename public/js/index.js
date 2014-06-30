@@ -2,23 +2,30 @@ var inputEd, outputEd
 
 var initialData = [
     {
-        id: "{{index()}}",
-        guid: "{{guid()}}",
-        bool: "{{bool()}}",
-        floating: "{{floating(-25.2, 25.0)}}",
-        constant: "http://www.google.com",
-        integer: "{{integer()}}",
-        rangedInteger: "{{integer(2, 10)}}",
-        words: "{{lorem(3, 'words')}}",
-        sentence: "{{lorem(1, 'sentence')}}",
-        paragraph: "{{lorem(2, 'paragraphs')}}",
-        fullName: "{{firstName()}} X. {{lastName()}}",
+        id: "{{guid()}}",
+        isActive: "{{bool()}}",
+        temperature: "{{floating(-50, 100)}} deg. C",
+        url: "http://www.google.com",
+        age: "{{integer(1, 120)}}",
+        favoriteColor: "{{pick(['red', 'green', 'blue'])}}",
+        first: "{{firstName())}}",
+        last: "{{lastName())}}",
+        gender: "{{gender()}}",
+        email: "{{email()}}",
+        phones: {
+            home: "{{phone()}}",
+            work: "{{phone()}}",
+            cell: "{{phone()}}"
+        },
+        address: "{{address()}}",
+        personalStatement: "{{lorem(2, 'paragraphs')}}",
+        tagline: "{{lorem(1, 'sentence')",
         tags: [
             "{{lorem(1, 'word')}}",
             "{{lorem(1, 'word')}}",
             "{{lorem(1, 'word')}}"
         ],
-        people: [
+        friends: [
             {
                 firstName: "{{firstName()}}",
                 lastName: "{{lastName()}}",
