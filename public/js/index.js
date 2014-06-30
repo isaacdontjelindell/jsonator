@@ -106,7 +106,13 @@ function send () {
 }
 
 function createEndpoint (json) {
-    var data = eval(json)
+    try {
+        var data = eval(json)
+    }
+    catch (err) {
+        outputEd.setValue('Error parsing schema: ' + err.message)
+        return
+    }
 
     $.post(url + "/set", {schema: JSON.stringify(data)}, function (res) {
         $.get(url + "/get/" + res.id, null, function (results) {
