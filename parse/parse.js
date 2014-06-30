@@ -2,6 +2,7 @@ var g = require('./generators.js')
 var par = require('./parse-js.js');
 
 exports.generate = function (schema) {
+    index = 0
     return parseArr(schema)
 }
 

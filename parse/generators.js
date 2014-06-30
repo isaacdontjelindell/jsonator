@@ -1,7 +1,5 @@
 var ch = require('chance').Chance()
 
-// instance vars
-index = 0
 
 exports.index = function () { return index++ }
 exports.guid = function () { return ch.guid().toLowerCase() }
