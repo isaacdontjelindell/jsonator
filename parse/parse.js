@@ -48,7 +48,7 @@ function parseObj(o) {
                 retObj[key] = parseArr(item)
         }
     })
-    return retObj;
+    return retObj
 }
 
 function parseString(s) {
@@ -114,10 +114,10 @@ function parseFunc(call) {
     var funcName = call[1][1]
     var args = call[2]
 
-    var reducedArgs = [];
+    var reducedArgs = []
 
     args.forEach(function (arg) {
-        var type = arg[0];
+        var type = arg[0]
 
         switch (type) {
             case 'call':
@@ -133,7 +133,7 @@ function parseFunc(call) {
                 arg[1].forEach(function (el) {
                     ret.push(el[1])
                 })
-                reducedArgs.push(ret);
+                reducedArgs.push(ret)
                 break
             default:
                 reducedArgs.push(arg[1])
