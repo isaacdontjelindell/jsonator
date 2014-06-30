@@ -36,9 +36,11 @@ function parseObj(o) {
     Object.keys(o).forEach(function (key, _) {
         var item = o[key];
 
-        var type = 'string'
+        var type = 'object'
         if (Array.isArray(item))
             type = 'array'
+        if (typeof item == 'string')
+            type = 'string'
 
         switch (type) {
             case 'string':
@@ -46,6 +48,9 @@ function parseObj(o) {
                 break
             case 'array':
                 retObj[key] = parseArr(item)
+                break
+            case 'object':
+                retObj[key] = parseObj(item)
         }
     })
     return retObj

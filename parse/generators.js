@@ -13,12 +13,14 @@ exports.integer = function (s, e) { return ch.integer({min: s, max: e}) }
 exports.random = function(options) {
     return ch.pick(options)
 }
+exports.pick = exports.random
 exports.firstName = function () { return ch.first() }
 exports.lastName = function () { return ch.last() }
 exports.gender = function () { return ch.gender() }
 exports.company = function () { return ch.capitalize(ch.word({syllables: 3})) }
 exports.email = function () { return ch.email() }
 exports.phone = function () { return ch.phone() }
+exports.address = function () { return ch.address() }
 exports.street = function () { return ch.street() }
 exports.city = function () { return ch.city() }
 exports.state = function () { return ch.state({full: true}) }
