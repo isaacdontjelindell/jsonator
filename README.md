@@ -1,4 +1,4 @@
-jsonator
+JSONator
 ========
 
 Web service for creating random JSON data
@@ -32,3 +32,9 @@ then the data returned by the endpoint looks like this:
   }
 ]
 ```
+
+#### Usage
+
+The schema is described in JavaScript object notation. Any string is valid as a value. Substitution functions are wrapped between two curly braces (e.g. `{{firstName()}}`). Some substitution functions can take parameters. For example, `{{index(2, 10)}}` will return an integer between 2 and 10 inclusive.
+
+The complete list of substitution functions can be found below.
