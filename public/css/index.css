@@ -133,6 +133,8 @@ footer {
 
 .CodeMirror {
     height: 100%;
+    font-size: 13px;
+    font-family: "Menlo","Consolas","Inconsolata","Deja Vu Sans Mono","Droid Sans Mono","Andale Mono","Lucida Console",monospace;
 }
 
 .CodeMirror-scroll {
