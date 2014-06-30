@@ -27,6 +27,7 @@ app.post('/set', function (req, res, next) {
     var schema = req.body.schema
     var id = (Math.random() + 1).toString(36).slice(2)
     client.set(id, schema)
+    client.expire(id, 2592000) // expire in 30 days
     res.send({id: id})
 });
 
