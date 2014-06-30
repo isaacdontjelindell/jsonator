@@ -8,8 +8,8 @@ var initialData = [
         url: "http://www.google.com",
         age: "{{integer(1, 120)}}",
         favoriteColor: "{{pick(['red', 'green', 'blue'])}}",
-        first: "{{firstName())}}",
-        last: "{{lastName())}}",
+        first: "{{firstName()}}",
+        last: "{{lastName()}}",
         gender: "{{gender()}}",
         email: "{{email()}}",
         phones: {
