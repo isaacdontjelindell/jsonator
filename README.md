@@ -1,7 +1,7 @@
 JSONator
 ========
 
-Web service for creating random JSON data
+Web service for creating random JSON data. Try it at [jsonator.herokuapp.com](jsonator.herokuapp.com). Bugs, feature requests, and questions should be raised here as issues in the [issue tracker](https://github.com/isaacdontjelindell/jsonator/issues).
 
 
 ### What is JSONator?
