@@ -47,3 +47,6 @@ The complete list of substitution functions can be found below.
 * `integer([min, max])` -- returns a random integer. If min and max are specified, the integer will be between min and max (inclusive). If min and max are not specified, the integer will be bounded by Javascript's integer size.
 * `floating([min, max])` -- returns a random floating-point number. If min and max are specified, the number will be between min and max (inclusive). If min and max are not specified, the integer will be bounded by Javascript's floating point size.
 * `lorem(num, type)` -- returns random text. `num` must be an integer specifying how many units of the given type should be generated. `type` must be one of ["words", "sentences", or "paragraphs"] ("word", "sentence", and "paragraph" are also legal). Example: `lorem(3, "sentences")` will return 3 sentences.
+
+
+Combining substitution functions is also legal. For example, `{{firstName()}} X. {{lastName()}}` will return something like `Augusta X. Christensen`. Since the ` X. ` is not a substitution function, it is treated as a constant and always included in the returned data.
