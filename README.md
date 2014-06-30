@@ -50,3 +50,9 @@ The complete list of substitution functions can be found below.
 
 
 Combining substitution functions is also legal. For example, `{{firstName()}} X. {{lastName()}}` will return something like `Augusta X. Christensen`. Since the ` X. ` is not a substitution function, it is treated as a constant and always included in the returned data.
+
+### License
+
+All JSONator code is licensed under the terms of the MIT License. See `LICENSE.md` for the full text of the license.
+
+The Javascript parser was written by [Mihai Bazon](http://mihai.bazon.net/blog) and distributed under the terms of the BSD License. See `parse/parse-js.js` for the full text of the license.
