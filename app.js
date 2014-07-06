@@ -55,14 +55,16 @@ app.get('/get/:id', function (req, res) {
         client.get(req.params.id, function (err, reply) {
             if (err != null) {
                 console.log(err)
-                res.send(500, JSON.stringify({error: 'Unknown error'}));
+                res.send(500, JSON.stringify({error: 'Unknown error'}))
             }
             else if (reply == null) {
+                client.incr('get_unknown_id_requests')
                 res.send(404, JSON.stringify({error: 'Unknown ID'}))
             }
             else {
                 var schemaObj = JSON.parse(reply)
                 var returnVal = p.generate(schemaObj)
+                client.incr('get_valid_requests')
                 res.send(200, JSON.stringify(returnVal))
             }
         })
