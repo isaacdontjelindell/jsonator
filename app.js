@@ -10,11 +10,11 @@ var redis = require('redis')
     }
 
 var express = require('express')
-    app = express()
+var app = express()
 
 var cors = require('cors')
-    bodyParser = require('body-parser')
-    path = require('path')
+var bodyParser = require('body-parser')
+var path = require('path')
 
 
 app.use(cors())
